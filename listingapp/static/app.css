@@ -1,0 +1,479 @@
+.navbar-nav .nav-link {
+    color: #333;
+    transition: color 0.3s, border-bottom 0.3s;
+    border-bottom: 2px solid transparent;
+    
+}
+
+.navbar-nav .nav-link:hover {
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+}
+
+.animated-image {
+    animation: slideInLeft 1s ease-in-out;
+}
+
+@keyframes slideInLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Style for the dropdown menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 20px;
+    z-index: 1;
+    width: 1000px;
+    height: 550px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+}
+
+/* Style for the scrollbar */
+.dropdown-menu::-webkit-scrollbar {
+    width: 4px;
+
+}
+
+.dropdown-menu::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb {
+    background: #c89def;
+    border-radius: 4px;
+}
+
+.dropdown-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px;
+}
+
+.dropdown-menu ul li {
+    margin-bottom: 5px;
+}
+
+.dropdown-menu ul li a {
+    color: #997fd3;
+    text-decoration: none;
+    display: block;
+    border-radius: 3px;
+}
+
+.dropdown-menu ul li a:hover {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+
+.dropdown-menu:hover {
+    display: block;
+}
+
+
+.box-1 {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    gap: 30px;
+    display: flex;
+}
+.box-01 {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+   
+   
+}
+.dummy-box{
+    background-color: #e3d9d9;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+   
+   
+}
+
+.search-btn {
+    background-color: rgb(68, 118, 68);
+    border: none;
+    padding: 0 20px;
+    color: #fff;
+}
+
+.main-box {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.img-box {
+    border: 1px solid;
+    width: 150px;
+    border-radius: 10px;
+    padding: 5px;
+
+}
+
+.compare-btn {
+    background-color: rgb(255, 255, 255);
+    border-color: black;
+    padding: 0 30px;
+    color: #000000;
+
+}
+
+/* form */
+.containers {
+    max-width: 500px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-group input[type="submit"] {
+    background-color: #4e4caf;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form-group input[type="submit"]:hover {
+    background-color: #7754e0;
+}
+
+.featured-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(7, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.featured-cards {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(7, 0, 0, 0.1);
+    /* padding: 20px 20px 0px 20px; */
+}
+
+.btn-one {
+    background-color: #dec3c3;
+    color: green;
+    padding: 10px;
+    border: none;
+
+
+
+}
+
+.btn-one:hover {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+}
+
+.btn-two {
+    width: 100%;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    padding: 7px;
+}
+
+.call-btn {
+    color: #fff;
+    background-color: rgb(239, 177, 62);
+    padding: 10px 20px;
+    border: none;
+    font-size: 25px;
+
+}
+
+.accordion-body ul li a {
+    text-decoration: none;
+}
+
+.social-icons {
+    display: flex;
+    gap: 20px;
+    padding-top: 20px;
+}
+
+.social-icons i {
+    font-size: 30px;
+    transition: transform 0.3s ease;
+}
+
+.social-icons i:hover {
+    transform: scale(1.2);
+}
+
+.dropdown-submenu:hover .dropdown-menu {
+    display: block;
+}
+
+/* login form start */
+.popup-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    width: 400px;
+    text-align: center;
+    position: relative;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form input {
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.form button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn {
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.btn-outline-success {
+    color: #28a745;
+    border: 2px solid #28a745;
+    background-color: transparent;
+}
+
+.btn-outline-success:hover {
+    background-color: #28a745;
+    color: white;
+}
+
+/* Eye button styles */
+
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+main {
+
+    margin: 0 auto;
+    height: 80vh;
+    margin-bottom: -100px;
+
+
+}
+
+
+.parallax {
+
+    background-image: url("https://www.goodcore.co.uk/blog/wp-content/uploads/2019/08/types-of-software.png");
+    min-height: 80vh;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.parallax-content {
+    min-height: 80vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 0 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 3em;
+    text-align: center;
+}
+
+.link-btn {
+    text-decoration: none;
+    color: #fff;
+    background-color: orange;
+    padding: 10px;
+}
+
+.heading {
+    font-size: 85px;
+}
+
+.line h6 a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.price-box{
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding:0px;
+
+}
+.register-btn{
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+.register-btn:hover{
+    background-color: #47981f;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+}
+.Software-btn{
+    background-color: rgb(53, 179, 53);
+    padding: 20px 70px;
+    text-decoration: none;
+    color: #fff;
+}
+.Services-btn{
+    background-color:#007bff;
+    padding: 20px 70px;
+    text-decoration: none;
+    color: #fff;
+}
+.com-btn {
+    text-decoration: none;
+    background-color: rgb(219, 212, 212);
+    color: #000000;
+    padding: 20px 20px;
+    width:250px; 
+    height:60px;
+    display: inline-block; 
+    text-align: center;
+}
+
+.com-btn:hover {
+    text-decoration: none;
+    background-color: #007bff;
+    color: #ffffff;
+   
+}
+.num-active {
+    border-radius: 50%; 
+    background-color: #28a745;
+    border: 2px solid #28a745;
+    width: 30px;
+    height: 30px; 
+    display: inline-block; 
+    text-align: center; 
+    line-height: 30px; 
+    color: white;
+    cursor: pointer;
+}
+.num-deactive{
+    border-radius: 50%; 
+    background-color: #d9e0db;
+    border: 2px solid #e3f1e6;
+    width: 30px;
+    height: 30px; 
+    display: inline-block; 
+    text-align: center; 
+    line-height: 30px; 
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+
+}
+.num-gap{
+    display: flex;
+    gap:10px;
+    text-align: center;
+    align-items: center;
+    cursor: pointer;
+}
+.num-gap a{
+    text-decoration: none;
+    color: black;
+}
+
+
+#colorDisplay {
+    width: 200px;
+    height: 200px;
+    margin-top: 20px;
+    border: 1px solid rgb(109, 63, 63);
+  }
+ .check{
+  align-items: center;
+ }

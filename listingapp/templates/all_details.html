@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .card {
+            width: calc(33.33% - 20px);
+            margin-bottom: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .edit-delete {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .edit-delete a {
+            margin-left: 10px;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .edit-delete a:hover {
+            text-decoration: underline;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">Categories</div>
+            <div class="card-body">
+                <ul>
+                    {% for category in categories %}
+                    <li>{{ category.name }} 
+                        <span class="edit-delete">
+                            <a href="{% url 'edit_category' category.id %}">Edit</a> | 
+                            <a href="{% url 'delete_category' category.id %}">Delete</a>
+                        </span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">Subcategories</div>
+            <div class="card-body">
+                <ul>
+                    {% for subcategory in subcategories %}
+                    <li>{{ subcategory.name }} - Category: {{ subcategory.category.name }} 
+                        <span class="edit-delete">
+                            <a href="{% url 'edit_subcategory' subcategory.id %}">Edit</a> | 
+                            <a href="{% url 'delete_subcategory' subcategory.id %}">Delete</a>
+                        </span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">Software List</div>
+            <div class="card-body">
+                <ul>
+                    {% for softwarelist in softwarelist %}
+                    <li>
+                        <img src="{{ softwarelist.image.url }}" alt="{{ softwarelist.heading }}">
+                        <h3>{{ softwarelist.heading }}</h3>
+                        <p>{{ softwarelist.description }}</p>
+                        <p>{{ softwarelist.software_description }}</p>
+                        <p>{{ softwarelist.software_features }}</p>
+                        <p>{{ softwarelist.software_specialties }}</p>
+                        <p>Category: {{ softwarelist.subcategory.category.name }}</p>
+                        <p>Subcategory: {{ softwarelist.subcategory.name }}</p>
+                        <span class="edit-delete">
+                            <a href="{% url 'edit_softwarelist' softwarelist.id %}">Edit</a> | 
+                            <a href="{% url 'delete_softwarelist' softwarelist.id %}">Delete</a>
+                        </span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <!-- Price Start -->
+    <div class="container" style="padding-top:100px;">
+        <div class="row">
+            <div class="col-md-8">
+                <!-- Software details -->
+                <h3>{{ software.heading }}</h3>
+                <img src="{{ software.image.url }}" alt="{{ software.heading }}" class="img-fluid">
+                <p>{{ software.software_description }}</p>
+                <p>{{ software.software_features }}</p>
+                <p>{{ software.software_specialties }}</p>
+
+
+            </div>
+            <div class="col-md-4">
+                <!-- Sidebar or additional content -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Price end -->
+    <!-- footer start -->
+    <br>
+    <section>
+        <div class="container-fluid" style="background-color:#001452; padding:50px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3" style="color: #fff;">
+                        <h3>Who we are</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo laudantium saepe enim similique
+                            vel
+                            nostrum.</p>
+
+                    </div>
+                    <div class="col-md-3" style="color: #fff;">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href=""></a>Home</li>
+                            <li><a href=""></a>Find Software</li>
+                            <li><a href=""></a>Find Services</li>
+                            <li><a href=""></a>About</li>
+                            <li><a href=""></a>FAQs</li>
+
+
+                        </ul>
+
+                    </div>
+                    <div class="col-md-3" style="color: #fff;">
+                        <h3>Contact Us</h3>
+                        <h6> <i class="fa-solid fa-location-dot"></i> Nelson Tower, 4th wing, Ground floor, Nelson
+                            Manickam Rd, Nungambakkam, Chennai, Tamil Nadu 600029.</h6>
+                        <br>
+                        <h6> <i class="fa-solid fa-envelope"></i> info@dbotdigital.com</h6>
+                        <br>
+                        <h6> <i class="fa-solid fa-phone"></i> +91 9715954300</h6>
+
+
+                    </div>
+                    <div class="col-md-3" style="color: #fff;">
+                        <h3>logo</h3>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Just_software_logo_blauer_kreis_auf_transparentem_hintergrund_%282000x638px%29.png"
+                            alt="" width="150px">
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+                <hr style="color: #fff;">
+                <div class="text-center">
+                    <h6 style="color: #fff;">Copyrights © All Rights Reserved 2024 | Designed By Dbot Digital</h6>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+    <!-- footer end -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script>
+        document.getElementById('loginBtn').addEventListener('click', function () {
+            document.getElementById('popupContainer').style.display = 'flex';
+        });
+
+        document.getElementById('popupContainer').addEventListener('click', function (e) {
+            if (e.target.id === 'popupContainer') {
+                document.getElementById('popupContainer').style.display = 'none';
+            }
+        });
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get the close button
+            var closeBtn = document.getElementById('closeBtn');
+
+            // Get the popup container
+            var popupContainer = document.getElementById('popupContainer');
+
+            // Add click event listener to the close button
+            closeBtn.addEventListener('click', function () {
+                // Hide the popup container
+                popupContainer.style.display = 'none';
+            });
+        });
+    </script>
+
+</body>
+
+</html>
+{% endblock %}
