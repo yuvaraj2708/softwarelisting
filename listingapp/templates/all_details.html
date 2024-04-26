@@ -64,6 +64,24 @@
             height: auto;
             margin-bottom: 10px;
         }
+
+        .create-btn {
+            display: block;
+            margin-top: 10px;
+            text-align: center;
+            background-color: #007bff;
+            color: #fff;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .create-btn:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -81,6 +99,7 @@
                     </li>
                     {% endfor %}
                 </ul>
+                <a href="{% url 'create_category' %}" class="create-btn">Create Category</a> <!-- Create button for category -->
             </div>
         </div>
 
@@ -97,6 +116,7 @@
                     </li>
                     {% endfor %}
                 </ul>
+                <a href="{% url 'create_subcategory' %}" class="create-btn">Create Subcategory</a> <!-- Create button for subcategory -->
             </div>
         </div>
 
@@ -106,12 +126,8 @@
                 <ul>
                     {% for softwarelist in softwarelist %}
                     <li>
-                        <img src="{{ softwarelist.image.url }}" alt="{{ softwarelist.heading }}">
+                       
                         <h3>{{ softwarelist.heading }}</h3>
-                        <p>{{ softwarelist.description }}</p>
-                        <p>{{ softwarelist.software_description }}</p>
-                        <p>{{ softwarelist.software_features }}</p>
-                        <p>{{ softwarelist.software_specialties }}</p>
                         <p>Category: {{ softwarelist.subcategory.category.name }}</p>
                         <p>Subcategory: {{ softwarelist.subcategory.name }}</p>
                         <span class="edit-delete">
@@ -121,6 +137,8 @@
                     </li>
                     {% endfor %}
                 </ul>
+                <a href="{% url 'create_softwarelist' %}" class="create-btn">Create Software List</a> <!-- Create button for software list -->
+       
             </div>
         </div>
     </div>

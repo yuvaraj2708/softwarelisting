@@ -169,17 +169,16 @@
                         <a class="nav-link  text-center" aria-current="page" href="about.html">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  text-center" aria-current="page" href="price.html">Register Your Software</a>
+                        <a class="nav-link  text-center" aria-current="page" href="/price">Register Your Software</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link  text-center" aria-current="page" href="">My Listing</a>
-                    </li>
-                </ul>
-                <form class="d-flex" style="visibility: hidden;">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-                <button id="loginBtn" class="btn btn-outline-success text-end">Login</button>
+                    </ul>
+            
+                {% if user.is_authenticated %}
+                <a href="{% url 'my_listing' %}" class="btn btn-outline-success text-end">My Listing</a>
+                <a href="{% url 'logout' %}" class="btn btn-outline-success text-end">Logout</a>
+            {% else %}
+                <a href="{% url 'login' %}" class="btn btn-outline-success text-end">Login</a>
+            {% endif %}
 
                 <!-- Popup Container -->
                 <div id="popupContainer" class="popup-container">
@@ -208,4 +207,64 @@
     </nav>
 
     {% block content %}
+    
     {% endblock %}
+    <section>
+        <div class="container-fluid" style="background-color:#001452; padding:50px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3" style="color: #fff;">
+                        <h3>Who we are</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo laudantium saepe enim similique
+                            vel
+                            nostrum.</p>
+    
+                    </div>
+                    <div class="col-md-3" style="color: #fff;">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href=""></a>Home</li>
+                            <li><a href=""></a>Find Software</li>
+                            <li><a href=""></a>Find Services</li>
+                            <li><a href=""></a>About</li>
+                            <li><a href=""></a>FAQs</li>
+    
+    
+                        </ul>
+    
+                    </div>
+                    <div class="col-md-3" style="color: #fff;">
+                        <h3>Contact Us</h3>
+                        <h6> <i class="fa-solid fa-location-dot"></i> Nelson Tower, 4th wing, Ground floor, Nelson
+                            Manickam Rd, Nungambakkam, Chennai, Tamil Nadu 600029.</h6>
+                        <br>
+                        <h6> <i class="fa-solid fa-envelope"></i> info@dbotdigital.com</h6>
+                        <br>
+                        <h6> <i class="fa-solid fa-phone"></i> +91 9715954300</h6>
+    
+    
+                    </div>
+                    <div class="col-md-3" style="color: #fff;">
+                        <h3>logo</h3>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Just_software_logo_blauer_kreis_auf_transparentem_hintergrund_%282000x638px%29.png"
+                            alt="" width="150px">
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+    
+                </div>
+                <hr style="color: #fff;">
+                <div class="text-center">
+                    <h6 style="color: #fff;">Copyrights © All Rights Reserved 2024 | Designed By Dbot Digital</h6>
+                </div>
+    
+            </div>
+    
+    
+        </div>
+    
+    </section>
+    

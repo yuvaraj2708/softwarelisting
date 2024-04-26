@@ -1,7 +1,38 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+
 <style>
+    .selected-software-popup {
+        position: fixed;
+        top: 50%;
+        right: 0;
+        transform: translate(0, -50%);
+        background-color: #ffffff;
+        border: 1px solid #ccc;
+        padding: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 9999;
+    }
+    
+    .selected-software-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .selected-software-image {
+        max-width: 100px; /* Adjust the maximum width as needed */
+    }
+    
+    .btn-secondary {
+        margin-top: 10px;
+    }
+    
     /* Style for the dropdown menu */
     .dropdown-menu {
         display: none;
@@ -125,6 +156,129 @@
         border: none;
         outline: none;
     }
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+    
+    .container-fluid {
+        padding: 20px;
+    }
+    
+    .main-box {
+        background-color: #fff;
+        margin-bottom: 20px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .img-box img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .rating {
+        display: flex;
+        align-items: center;
+    }
+    
+    .rating img {
+        margin-right: 5px;
+    }
+    
+    .compare-btn {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    .compare-btn:hover {
+        background-color: #0056b3;
+    }
+    
+    .search-btn {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    .search-btn:hover {
+        background-color: #0056b3;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    .form-group label {
+        font-weight: bold;
+    }
+    
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group textarea {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    .form-group textarea {
+        height: 100px;
+    }
+    
+    .form-group input[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    .form-group input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+    
+    .pagination {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        list-style: none;
+    }
+    
+    .pagination li {
+        margin: 0 5px;
+    }
+    
+    .pagination li a {
+        display: block;
+        padding: 5px 10px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+    
+    .pagination li a:hover {
+        background-color: #0056b3;
+    }
 </style>
 
 
@@ -177,6 +331,8 @@
     </div>
     <!-- nav bar end -->
     <!-- listing start -->
+   <br><br>
+   
     <section>
         <div class="container-fluid">
             <div class="container">
@@ -189,79 +345,91 @@
                             <a href="#" style="text-decoration: none;">
                                 <h6>Listings /</h6>
                             </a>
-                            <a href="#" style="text-decoration: none;">
-                                <h6>Accounting & Finance /</h6>
-                            </a>
-                            <a href="#" style="text-decoration: none;">
-                                <h6>Accounting Software </h6>
-                            </a>
+                            {% if software_lists %}
+                                <a href="#" style="text-decoration: none;">
+                                    <h6>{{ software_lists.0.subcategory.category.name }} /</h6>
+                                </a>
+                                <a href="#" style="text-decoration: none;">
+                                    <h6>{{ software_lists.0.subcategory.name }}</h6>
+                                </a>
+                            {% endif %}
                         </div>
-                        <div>
-                            <h1>Category: Accounting Software</h1>
-                            <hr>
-                        </div>
-                        <div class="box-1">
-                            <div class="row">
-                                <div class="col-md-4 col-sm-12">
-                                    <input type="text" class="form-control" placeholder="Keyword..">
-                                </div>
-                                <div class="col-md-4 col-sm-12 mt-2 mt-md-0">
-                                    <div class="dropdown">
-                                        <button class="btn btn-light btn-block dropdown-toggle" type="button"
-                                            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Filter Options
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <li><a class="dropdown-item" href="#">Action</a></li>
-                                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                        </ul>
+                        {% if software_lists %}
+                            <div>
+                                <h1>{{ software_lists.0.subcategory.name }}</h1>
+                                <hr>
+                            </div>
+                        {% endif %}
+                        
+                        <form method="GET" >
+                            <div class="box-1">
+                                <div class="row">
+                                    <!-- Add the keyword input field -->
+                                    <div class="col-md-4 col-sm-12">
+                                        <input id="keyword" type="text" class="form-control" name="keyword" placeholder="Keyword..">
+                                    </div>
+                                   
+                                    <div class="col-md-4 col-sm-12 mt-2 mt-md-0">
+                                        <button type="submit" class="btn btn-primary search-btn">Search Now</button>
+                                    </div>
+                                    <div class="col-md-4 col-sm-12 mt-2 mt-md-0">
+                                        <form id="subcategoryForm">
+                                            <select id="subcategory" class="form-control">
+                                                <option value="">Select Subcategory</option>
+                                                {% for subcategory in subcategories %}
+                                                    <option value="{{ subcategory.id }}">{{ subcategory.name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </form>
                                     </div>
                                 </div>
-                                <div class="col-md-4 col-sm-12 mt-2 mt-md-0">
-                                    <button class="btn btn-primary search-btn">Search Now</button>
-                                </div>
                             </div>
-                        </div>
+                        </form>
                         <br>
 
                    
                         <br>
-                        {% for software_list in software_lists %}
-<div class="main-box">
-    <div class="row">
-        <div class="col-md-4">
-            <div class="img-box">
-                <img src="{{ software_list.image.url }}" alt="{{ software_list.heading }}" class="img-fluid">
-                <p style="font-size:14px;">{{ software_list.subcategory.category.name }}</p>
-            </div>
-
-            <div style="display: flex; gap:10px;">
-                <h6 style="padding-top:8px;">Rating</h6>
-                <!-- Replace this with the actual rating -->
-                <img src="img/star-Photoroom.png-Photoroom (1).png" alt="Rating" class="img-fluid" width="100px">
-            </div>
-            <button class="compare-btn"><i class="fa-solid fa-code-compare"></i> Compare</button>
-
-        </div>
-        <div class="col-md-8">
-            <h1>{{ software_list.heading }}</h1>
-            <p>Software Description: {{ software_list.software_description }}</p>
-            <p>Software Features: {{ software_list.software_features }}</p>
-            <!-- Add more details here as needed -->
-
-            <!-- Example link to view more details -->
-            <a href="{% url 'view_software' software_list.pk %}" style="text-decoration: none;">Read More ></a>
-            <hr>
-            <div class="d-flex justify-content-end" style="gap:20px;">
-                <button class="btn btn-primary search-btn">Free Demo</button>
-                <button class="btn btn-primary search-btn">Get Pricing</button>
-            </div>
-
-        </div>
-    </div>
-</div>
-{% endfor %}
+                        <form method="post">
+                            {% csrf_token %}
+                            {% for software_list in software_lists %}
+                            <div class="main-box">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="img-box">
+                                            <img src="{{ software_list.image.url }}" class="img-fluid">
+                                        </div>
+                                        <div style="display: flex; gap:10px;">
+                                            <h6 style="padding-top:8px;">Rating</h6>
+                                            <!-- Replace this with the actual rating -->
+                                            <img src="{% static 'img/star-Photoroom.png-Photoroom (1).png' %}" alt="Rating" class="img-fluid" width="100px">
+                                        </div>
+                                        <!-- Checkbox for comparison -->
+                                        <input type="checkbox" class="compare-checkbox" name="selected_software" value="{{ software_list.pk }}">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h1>{{ software_list.heading }}</h1>
+                                        <p>Description: {{ software_list.description }}</p>
+                                        <a href="{% url 'view_software' software_list.pk %}" style="text-decoration: none;">Read More ></a>
+                                        <hr>
+                                        <div class="d-flex justify-content-end" style="gap:20px;">
+                                            <button class="btn btn-primary search-btn">Free Demo</button>
+                                            <button class="btn btn-primary search-btn">Get Pricing</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            <button type="submit" class="btn btn-primary">Compare Selected Software</button>
+                        </form>
+                        
+                        <!-- Popup for selected software -->
+                        <div id="selectedSoftwarePopup" class="selected-software-popup" style="display: none;">
+                            <div class="selected-software-content">
+                                <img id="selectedSoftwareImage" class="selected-software-image" src="" alt="Selected Software Image">
+                                <button id="cancelCompareBtn" class="btn btn-secondary">Cancel</button>
+                            </div>
+                        </div>
+                        
                         <br>
                        
 
@@ -329,45 +497,7 @@
 
     <br>
     <!-- footer start -->
-    <section>
-        <div class="container-fluid" style="background-color: rgb(1, 1, 17); padding:50px;">
-            <div class="row">
-                <div class="col-md-3" style="color: #fff;">
-                    <h3>Who we are</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo laudantium saepe enim similique vel
-                        nostrum.</p>
-
-                </div>
-                <div class="col-md-3" style="color: #fff;">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li>Home</li>
-                        <li>About</li>
-                        <li>Contact</li>
-                        <li>Service</li>
-                        <li>Blog</li>
-                    </ul>
-
-                </div>
-                <div class="col-md-3" style="color: #fff;">
-                    <h3>Contact Us</h3>
-                    <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, sapiente?</h6>
-                    <h6>info@gmail.com</h6>
-                    <h6>9587642312</h6>
-
-                </div>
-                <div class="col-md-3" style="color: #fff;">
-                    <h3>logo</h3>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Just_software_logo_blauer_kreis_auf_transparentem_hintergrund_%282000x638px%29.png"
-                        alt="" width="150px">
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
+ 
     <!-- footer end -->
 
 
@@ -377,6 +507,9 @@
         crossorigin="anonymous"></script>
 
     <script>
+
+     
+
         // Function to open the popup
         function openPopup() {
             document.getElementById("popup").style.display = "block";
@@ -386,6 +519,57 @@
         function closePopup() {
             document.getElementById("popup").style.display = "none";
         }
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#subcategory').select2({
+                placeholder: "Select a Subcategory",
+                allowClear: true,
+                dropdownAutoWidth: true,
+                width: '100%',
+            });
+        });
+    </script>
+    <script>
+        document.getElementById("subcategory").addEventListener("change", function() {
+            var subcategoryId = this.value;
+            if (subcategoryId) {
+                var url = "{% url 'get_software_lists' 0 %}".replace("0", subcategoryId);
+                window.location.href = url;
+            }
+        });
+
+// Function to display popup with selected software image
+// Function to display popup with selected software image
+function showSelectedSoftwarePopup(imageSrc) {
+    var selectedSoftwarePopup = document.getElementById('selectedSoftwarePopup');
+    var selectedSoftwareImage = document.getElementById('selectedSoftwareImage');
+    selectedSoftwareImage.src = imageSrc;
+    selectedSoftwarePopup.style.display = 'block';
+}
+
+// Add event listener to checkboxes
+var checkboxes = document.querySelectorAll('.compare-checkbox');
+checkboxes.forEach(function(checkbox) {
+    checkbox.addEventListener('change', function() {
+        var selectedSoftware = [];
+        checkboxes.forEach(function(checkbox) {
+            if (checkbox.checked) {
+                var softwareImage = checkbox.closest('.row').querySelector('.img-box img').src;
+                showSelectedSoftwarePopup(softwareImage);
+            }
+        });
+    });
+});
+
+// Add event listener to cancel button
+var cancelCompareBtn = document.getElementById('cancelCompareBtn');
+cancelCompareBtn.addEventListener('click', function() {
+    var selectedSoftwarePopup = document.getElementById('selectedSoftwarePopup');
+    selectedSoftwarePopup.style.display = 'none';
+});
+
+
     </script>
 </body>
 

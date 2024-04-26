@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<br><br>
+<div class="container py-5">
+    <h1 class="mb-4 text-center">Comparison</h1>
+    <div class="row">
+        {% for software in selected_software %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="{{ software.image.url }}" class="card-img-top" alt="{{ software.heading }}" style="width: 100%; height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ software.heading }}</h5>
+                    <p class="card-text text-muted">{{ software.description }}</p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Software Description:</strong> {{ software.software_description }}</li>
+                        <li class="list-group-item"><strong>Software Features:</strong> {{ software.software_features }}</li>
+                        <li class="list-group-item"><strong>Software Specialties:</strong> {{ software.software_specialties }}</li>
+                    </ul>
+                    <!-- Add more details here if needed -->
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

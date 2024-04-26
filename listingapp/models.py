@@ -1,4 +1,9 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+
+class CustomUser(AbstractUser):
+    # Add custom fields if needed
+    is_staff = models.BooleanField(default=False)
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
