@@ -49,3 +49,23 @@ class EnquiryForm(forms.Form):
     message = forms.CharField(
         widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 4, 'placeholder': 'Enter your message'})
     )
+
+class softwareEnquiryForm(forms.Form):
+    name = forms.CharField(
+        max_length=100,
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your name'})
+    )
+    email = forms.EmailField(
+        widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Enter your email'})
+    )
+    subject = forms.CharField(
+        max_length=200,
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter the subject'})
+    )
+    phonenumber = forms.CharField(
+        max_length=20,  # Adjust max length according to your requirements
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your phonenumber'})
+    )
+    message = forms.CharField(
+        widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 4, 'placeholder': 'Enter your message'})
+    )

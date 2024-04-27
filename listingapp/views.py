@@ -20,7 +20,7 @@ def login_view(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('submit')  # Replace 'index' with the name of your desired view
+            return redirect('enquiry')  # Replace 'index' with the name of your desired view
         else:
             # Authentication failed
             # You might want to add a message here indicating login failed
@@ -43,9 +43,34 @@ def register(request):
 
 def index(request):
     categories = Category.objects.all()
-    return render(request,"index.html", {'categories': categories})
+
+    # Fetch premium software with their amounts
+    premium_software = SoftwareList.objects.filter(is_premium=True).exclude(amount=None)
+
+    return render(request, "index.html", {'categories': categories, 'premium_software': premium_software})
 
 def get_software_lists(request, subcategory_id):
+    if request.method == 'POST':
+        form = softwareEnquiryForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            subject = form.cleaned_data['subject']
+            phonenumber = form.cleaned_data['phonenumber']
+            message = form.cleaned_data['message']
+
+            # Send email
+            send_mail(
+                subject,
+                f"Name: {name}\nEmail: {email}\nMessage: {message}\nphonenumber: {phonenumber}",
+                'your-email@example.com',  # Replace with your email
+                ['yuvaraj.margy@gmail.com'],  # Receiver's email
+                fail_silently=False,
+            )
+            messages.success(request, 'Your enquiry has been submitted successfully!')
+            return redirect('')
+    else:
+        form = softwareEnquiryForm()
     categories = Category.objects.all()
     subcategories = Subcategory.objects.all()
     software_lists = SoftwareList.objects.filter(subcategory_id=subcategory_id)
@@ -59,7 +84,7 @@ def get_software_lists(request, subcategory_id):
         if selected_software_ids:
             return redirect('compare_software', ids=','.join(selected_software_ids))
 
-    return render(request, 'software_lists.html', {'software_lists': software_lists, 'categories': categories, 'subcategories': subcategories})
+    return render(request, 'software_lists.html', {'software_lists': software_lists, 'categories': categories, 'subcategories': subcategories,'form': form})
 
 
 def view_software_details(request, software_id):
